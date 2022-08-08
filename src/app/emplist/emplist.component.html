@@ -1,0 +1,45 @@
+
+
+     <h1>Employees list</h1>
+
+
+
+     <div *ngIf="tableEmp==true">
+    
+      <table class="table">
+        <thead>
+          <tr>
+             
+            <th scope="col">Code</th>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Gender</th>
+            <th scope="col">DOB</th>
+            <th scope="col">Address</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor='let emp of employees' [ngSwitch]="emp.gender">
+          
+          <tr [ngClass]="{'red':showcolor?emp.salary<45:false}" *ngIf='rbselect=="all" || emp.gender==rbselect'>
+
+            <th scope="row">{{emp.code}}</th>
+            <td>{{emp.fname+"  "+emp.mname+"  "+emp.lname}}</td>
+            <td>{{emp.age}}</td>
+            <td>{{emp.gender}}</td>
+            <td>{{emp.dob}}</td>
+            <td>{{emp.address1+"  "+emp.address2}}</td>
+           
+          </tr>
+        </ng-container>
+          <tr *ngIf="employees.length==0">
+            
+            <td colspan="4">No employees record found</td>
+           
+           
+          </tr>
+         
+         
+        </tbody>
+      </table>
+     </div>
